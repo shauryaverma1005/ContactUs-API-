@@ -43,7 +43,22 @@ const addInquire = async (req, res) => {
 
 // Inquire DELETE Route
 const deleteInquire = async (req, res) => {
-    
+    try {
+        const { inquireId } = req.body;
+        const deletedInquire = await Contact.findByIdAndDelete(inquireId);
+        res.status(200).json({
+            statusCode: 200,
+            success: true,
+            message: "Inquire Deleted Successfully",
+            data: deletedInquire
+        })
+    } catch (error) {
+        res.status(500).json({
+            statusCode: 500,
+            success: false,
+            message: "Error Deleting Inquire"
+        })
+    }
 }
 
 export{ renderEjs, addInquire, deleteInquire}
