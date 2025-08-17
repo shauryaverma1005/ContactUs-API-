@@ -1,10 +1,11 @@
 import express from "express";
+import { renderEjs, addInquire, deleteInquire } from "../controllers/contact.controller.js";
 
 const router = express.Router();
 
-router.route("/queries")
+router.route("/inquires")
 .get(renderEjs)
-.post(addQuerie)
-.delete(deleteQueire)
+.post(addInquire)
+.delete(deleteInquire)
 
 export default router;
